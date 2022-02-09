@@ -4,9 +4,9 @@ from song import Song
 
 
 class Artist:
-    def __init__(self, data):
-        self.id: str = data[0].get(const.ID)
-        self.name: str = data[0].get(const.NAME)
+    def __init__(self, id: str, name: str):
+        self.id: str = id
+        self.name: str = name
         self._albums: list[Album] = []
         self._singles: Song = []
 
@@ -17,7 +17,7 @@ class Artist:
         return None
 
     def album_exist(self, album_name: str):
-        if self.get_album_by_name(album_name) is None:
+        if self.get_album_by_name(album_name) is not None:
             return True
         return False
 
