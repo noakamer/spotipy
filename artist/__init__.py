@@ -10,14 +10,14 @@ class Artist:
         self._albums: List[Album] = []
         self._singles: List[Song] = []
 
-    def get_album_by_name(self, album_name: str):
+    def get_album_by_id(self, album_id: str):
         for album in self._albums:
-            if album.name == album_name:
+            if album.id == album_id:
                 return album
         return None
 
-    def album_exist(self, album_name: str):
-        if self.get_album_by_name(album_name) is not None:
+    def album_exist(self, album_id: str):
+        if self.get_album_by_name(album_id) is not None:
             return True
         return False
 

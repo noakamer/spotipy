@@ -11,3 +11,6 @@ class Album:
 
     def add_song_to_album(self, song: Song):
         self._songs_in_album.append(song)
+
+    def get_album_songs(self):
+        return self._songs_in_album
