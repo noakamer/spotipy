@@ -1,14 +1,25 @@
 from playlist import Playlist
 from typing import List
 import const
+from extract import convert_data_to_objects
+
+
+def get_artist_by_name(artist_name: dict):
+    for artist in const.LIST_OF_ARTISTS:
+        if artist_name == artist.name:
+            return True
+    return False
 
 
 class User:
+    #TODO what if it is an artist?
     def __init__(self, username: str, password: str, premium=None):
         self.username = username
         self.password = password
         if premium is None:
             self.is_premium = False
+        elif get_artist_by_name(username):
+            self.is_premium = premium
         else:
             self.is_premium = premium
         self.playlists: List[Playlist] = []
@@ -21,7 +32,7 @@ class User:
             if playlist.playlist_name == name:
                 # should throw exception "already have this playlist name"
                 pass
-        self.playlists.append(Playlist(name))
+        self.playlists.append(Playlist(name, self.is_premium))
 
     def get_playlist(self, name: str):
         for playlist in self.playlists:
