@@ -1,5 +1,6 @@
 from song import Song
 from typing import List
+from exceptions import CantAddAnotherPlaylistException
 
 
 class Playlist:
@@ -13,6 +14,5 @@ class Playlist:
 
     def add_song(self, song: Song):
         if not self.is_premium and len(self.playlist) == 20:
-            # throw exception "you cant add another playlist"
-            pass
+            raise CantAddAnotherPlaylistException
         self.playlist.append(song)

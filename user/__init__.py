@@ -1,6 +1,8 @@
 from playlist import Playlist
 from typing import List
 import const
+from exceptions import CantAddAnotherPlaylistException, ThisPlaylistNameAlreadyExistException, \
+    PlaylistNameDoesNotExistException, ArtistDoesNotExistException
 from extract import convert_data_to_objects
 
 
@@ -12,7 +14,7 @@ def get_artist_by_name(artist_name: dict):
 
 
 class User:
-    #TODO what if it is an artist?
+    # TODO what if it is an artist?
     def __init__(self, username: str, password: str, premium=None):
         self.username = username
         self.password = password
@@ -26,19 +28,17 @@ class User:
 
     def add_playlist(self, name: str):
         if not self.is_premium and len(self.playlists) == 5:
-            # throw exception "you cant add another playlist"
-            pass
+            raise CantAddAnotherPlaylistException
         for playlist in self.playlists:
             if playlist.playlist_name == name:
-                # should throw exception "already have this playlist name"
-                pass
+                raise ThisPlaylistNameAlreadyExistException
         self.playlists.append(Playlist(name, self.is_premium))
 
     def get_playlist(self, name: str):
         for playlist in self.playlists:
             if playlist.playlist_name == name:
                 return playlist
-        # should throw exception "playlist_not_exist"
+        raise PlaylistNameDoesNotExistException
 
     def get_all_artists(self):
         counter = 0
@@ -58,8 +58,7 @@ class User:
                         print(album.name)
                         counter += 1
         if not is_exist:
-            # throw exception
-            pass
+            raise ArtistDoesNotExistException
 
     def get_top_10_artist_songs(self, artist_id: str):
         all_songs = []
@@ -70,8 +69,7 @@ class User:
                 for album in artist.get_albums():
                     all_songs += album.get_album_songs()
         if not is_exist:
-            # throw exception
-            pass
+            raise ArtistDoesNotExistException
         sorted_list = sorted(all_songs, key=lambda song: song.popularity, reverse=True)
         counter = 0
         for i in sorted_list:
@@ -90,5 +88,4 @@ class User:
                         counter += 1
                         print(song.to_string())
         if not is_exist:
-            # throw exception
-            pass
+            raise ArtistDoesNotExistException
