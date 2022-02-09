@@ -1,4 +1,4 @@
-import const
+from typing import List
 from album import Album
 from song import Song
 
@@ -7,8 +7,8 @@ class Artist:
     def __init__(self, id: str, name: str):
         self.id: str = id
         self.name: str = name
-        self._albums: list[Album] = []
-        self._singles: Song = []
+        self._albums: List[Album] = []
+        self._singles: List[Song] = []
 
     def get_album_by_name(self, album_name: str):
         for album in self._albums:
