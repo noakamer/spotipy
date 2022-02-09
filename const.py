@@ -8,4 +8,4 @@ POPULARITY: str = 'popularity'
 ID: str = 'id'
 NAME: str = 'name'
 ARTISTS: str = 'artists'
-LIST_OF_ARTISTS: list[Artist] = [{}]
+LIST_OF_ARTISTS = []
