@@ -1,9 +1,11 @@
-SONGS_PATH = "resources/songs"
-SLASH = "/"
-KEY_OF_SONG = 'track'
-ALBUM = 'album'
-POPULARITY = 'popularity'
-ID = 'id'
-NAME = 'name'
-ARTISTS = 'artists'
+from artist import Artist
 
+SONGS_PATH: str = "resources/songs"
+SLASH: str = "/"
+KEY_OF_SONG: str = 'track'
+ALBUM: str = 'album'
+POPULARITY: str = 'popularity'
+ID: str = 'id'
+NAME: str = 'name'
+ARTISTS: str = 'artists'
+LIST_OF_ARTISTS: list[Artist] = [{}]
