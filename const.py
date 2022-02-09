@@ -1,4 +1,4 @@
-SONGS_PATH = "../resources/songs"
+SONGS_PATH = "resources/songs"
 SLASH = "/"
 KEY_OF_SONG = 'track'
 ALBUM = 'album'
