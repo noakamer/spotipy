@@ -29,9 +29,9 @@ def get_top_10_artist_songs(artist_id: str):
     if not is_exist:
         # throw exception
         pass
-    sorted_list = sorted(all_songs, key=lambda song: song.population, reverse=True)
-    for i in range(10):
-        print(sorted_list[i])
+    sorted_list = sorted(all_songs, key=lambda song: song.popularity, reverse=True)
+    for i in sorted_list:
+        print(i.to_string())
 
 
 def get_albums_songs(album_id: str):
@@ -40,7 +40,7 @@ def get_albums_songs(album_id: str):
         if artist.album_exist(album_id):
             is_exist = True
             for song in artist.get_album_by_id(album_id).get_album_songs():
-                print(song)
+                print(song.to_string())
     if not is_exist:
         # throw exception
         pass

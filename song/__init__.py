@@ -4,3 +4,6 @@ class Song:
         self.popularity = data.get(const.POPULARITY)
         self.id = data.get(const.ID)
         self.name = data.get(const.NAME)
+
+    def to_string(self):
+        return f"name: {self.name}"

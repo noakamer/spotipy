@@ -15,7 +15,7 @@ def create_new_artist(data: dict, artist_data: dict, song: Song):
     artist = Artist(artist_data.get(const.ID), artist_data.get(const.NAME))
     album = Album(data.get(const.ALBUM).get(const.ID), data.get(const.ALBUM).get(const.NAME))
     artist.add_album(album)
-    artist.get_album_by_name(album.name).add_song_to_album(song)
+    artist.get_album_by_id(album.id).add_song_to_album(song)
     return artist
 
 

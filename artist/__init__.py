@@ -17,7 +17,7 @@ class Artist:
         return None
 
     def album_exist(self, album_id: str):
-        if self.get_album_by_name(album_id) is not None:
+        if self.get_album_by_id(album_id) is not None:
             return True
         return False
 
