@@ -1,8 +1,5 @@
 import logging
 
-# logging.basicConfig(filename='project.log', level=logging.INFO)
-# logging.basicConfig(format='%(asctime)s - %(levelname)s : %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.DEBUG)
-
 # Create a custom logger
 logger = logging.getLogger(__name__)
 minimum_type_logger = logger.setLevel(logging.DEBUG)
@@ -32,11 +29,7 @@ def debug_log(class_name: str, func_name: str, message: str):
 
 def info_log(class_name: str, func_name: str, message: str):
     logger.name = class_name
-    try:
-        logger.info(f"in {func_name} function : {message}")
-    except UnicodeEncodeError:
-        raise UnicodeEncodeError
-
+    logger.info(f"in {func_name} function : {message}")
 
 
 def warning_log(class_name: str, func_name: str, message: str):
