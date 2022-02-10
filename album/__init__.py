@@ -18,7 +18,7 @@ class Album:
         self._songs_in_album.append(song)
         call_stack = inspect.stack()
         func_name = call_stack[0][3]
-        info_log(__name__, func_name, "created song to album successfully")
+        info_log(__name__, func_name, "added song to album successfully")
 
     def get_album_songs(self):
         return self._songs_in_album

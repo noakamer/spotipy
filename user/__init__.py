@@ -6,7 +6,7 @@ import const
 from log import debug_log, info_log, warning_log, error_log
 from exceptions import CantAddAnotherPlaylistException, ThisPlaylistNameAlreadyExistException, \
     PlaylistNameDoesNotExistException, ArtistDoesNotExistException
-from extract import convert_data_to_objects
+from extract_and_transform import load_to_the_relevant_objects
 
 
 def get_artist_by_name(artist_name: dict):
