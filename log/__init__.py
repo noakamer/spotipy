@@ -32,11 +32,7 @@ def debug_log(class_name: str, func_name: str, message: str):
 
 def info_log(class_name: str, func_name: str, message: str):
     logger.name = class_name
-    try:
-        logger.info(f"in {func_name} function : {message}")
-    except UnicodeEncodeError:
-        raise UnicodeEncodeError
-
+    logger.info(f"in {func_name} function : {message}")
 
 
 def warning_log(class_name: str, func_name: str, message: str):
