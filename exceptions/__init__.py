@@ -12,3 +12,7 @@ class PlaylistNameDoesNotExistException(Exception):
 
 class ArtistDoesNotExistException(Exception):
     pass
+
+
+class UserDoesNotExistException(Exception):
+    pass

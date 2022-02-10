@@ -86,7 +86,7 @@ class User:
         except ArtistDoesNotExistException:
             error_log(__name__, func_name, ArtistDoesNotExistException.__name__)
 
-    def get_top_10_artist_songs(self, artist_id: str):
+    def get_top_artist_songs(self, artist_id: str):
         call_stack = inspect.stack()
         func_name = call_stack[0][3]
         try:

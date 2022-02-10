@@ -22,19 +22,9 @@ logger.addHandler(console_handler)
 logger.addHandler(file_handler)
 
 
-def debug_log(class_name: str, func_name: str, message: str):
-    logger.name = class_name
-    logger.debug(f"in {func_name} function : {message}")
-
-
 def info_log(class_name: str, func_name: str, message: str):
     logger.name = class_name
     logger.info(f"in {func_name} function : {message}")
-
-
-def warning_log(class_name: str, func_name: str, message: str):
-    logger.name = class_name
-    logger.warning(f"in {func_name} function : {message}")
 
 
 def error_log(class_name: str, func_name: str, message: str):
