@@ -6,11 +6,11 @@ import const
 from log import info_log
 
 
-def get_artist(artist_data: dict):
+def get_artist(artist_id: dict):
     call_stack = inspect.stack()
     func_name = call_stack[0][3]
     for artist in const.LIST_OF_ARTISTS:
-        if artist_data.get(const.ID) == artist.id:
+        if artist_id == artist.id:
             info_log(__name__, func_name, "returned new artist successfully")
             return artist
     info_log(__name__, func_name, "artist not found")
@@ -33,7 +33,7 @@ def convert_data_to_object(list_of_all_data: list):
         data = data.get(const.KEY_OF_SONG)
         song = Song(data.get(const.POPULARITY), data.get(const.ID), data.get(const.NAME))
         for artist_data in data.get(const.ARTISTS):
-            artist = get_artist(artist_data)
+            artist = get_artist(artist_data.get(const.ID))
             if artist is not None:
                 if artist.album_exist(data.get(const.ALBUM).get(const.NAME)):
                     artist.get_album_by_name(data.get(const.ALBUM).get(const.NAME)).add_song_to_album(song)

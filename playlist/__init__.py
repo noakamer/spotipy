@@ -6,13 +6,10 @@ from log import info_log
 
 
 class Playlist:
-    def __init__(self, name: str, premium=None):
+    def __init__(self, name: str, premium):
         self.playlist_name: str = name
         self.playlist: List[Song] = []
-        if premium is None:
-            self.is_premium = False
-        else:
-            self.is_premium = premium
+        self.is_premium = premium
         call_stack = inspect.stack()
         info_log(__name__, call_stack[0][3], f"created {self.playlist_name} playlist successfully")
 

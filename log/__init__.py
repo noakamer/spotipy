@@ -1,8 +1,5 @@
 import logging
 
-# logging.basicConfig(filename='project.log', level=logging.INFO)
-# logging.basicConfig(format='%(asctime)s - %(levelname)s : %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.DEBUG)
-
 # Create a custom logger
 logger = logging.getLogger(__name__)
 minimum_type_logger = logger.setLevel(logging.DEBUG)
