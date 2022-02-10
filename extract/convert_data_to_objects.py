@@ -1,13 +1,20 @@
+import inspect
+
 from artist import Artist
 from song import Song
 from album import Album
 import const
+from log import debug_log, info_log, warning_log, error_log
 
 
 def get_artist(artist_data: dict):
+    call_stack = inspect.stack()
+    func_name = call_stack[0][3]
     for artist in const.LIST_OF_ARTISTS:
         if artist_data.get(const.ID) == artist.id:
+            info_log(__name__, func_name, "returned new artist successfully")
             return artist
+    info_log(__name__, func_name, "artist not found")
     return None
 
 
@@ -16,6 +23,9 @@ def create_new_artist(data: dict, artist_data: dict, song: Song):
     album = Album(data.get(const.ALBUM).get(const.ID), data.get(const.ALBUM).get(const.NAME))
     artist.add_album(album)
     artist.get_album_by_id(album.id).add_song_to_album(song)
+    call_stack = inspect.stack()
+    func_name = call_stack[0][3]
+    info_log(__name__, func_name, "returned new artist successfully")
     return artist
 
 
