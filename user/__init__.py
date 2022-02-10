@@ -8,22 +8,24 @@ from exceptions import CantAddAnotherPlaylistException, ThisPlaylistNameAlreadyE
 from extract_and_transform import load_to_the_relevant_objects
 
 
-def is_artist_exist(artist_name: dict):
+def get_artist_by_name(artist_name: dict):
     for artist in const.LIST_OF_ARTISTS:
         if artist_name == artist.name:
-            return True
-    return False
+            return artist
+    return None
 
 
 class User:
-    # TODO what if it is an artist?
     def __init__(self, username: str, password: str, premium=None):
         self.username = username
         self.password = password
-        if premium is None:
-            self.is_premium = False
-        elif is_artist_exist(username):
+        self.is_artist = False
+        self.artist = get_artist_by_name(username)
+        if self.artist is not None:
             self.is_premium = True
+            self.is_artist = True
+        elif premium is None:
+            self.is_premium = False
         else:
             self.is_premium = premium
         self.playlists: List[Playlist] = []
