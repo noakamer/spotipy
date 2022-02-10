@@ -14,6 +14,7 @@ load_to_the_relevant_objects.convert_data_to_object(extract.all_songs_data(extra
 # get_albums_songs('78bpIziExqiI9qztvNFlQu')
 # app.debug = True
 # app.run(host="0.0.0.0", port="5000")
-# use = User("noa", "1", True)
-# use.get_all_artists()
+use = User("noa", "1", True)
+use.add_playlist("try")
+use.add_playlist("try")
 # debug_log(class_name=__name__, message="hi")

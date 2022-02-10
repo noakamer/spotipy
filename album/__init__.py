@@ -1,7 +1,7 @@
 import inspect
 from typing import List
 from song import Song
-from log import debug_log, info_log, warning_log, error_log
+from log import info_log
 
 
 class Album:

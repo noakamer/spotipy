@@ -2,7 +2,7 @@ import inspect
 from song import Song
 from typing import List
 from exceptions import CantAddAnotherPlaylistException
-from log import info_log
+from log import info_log, error_log
 
 
 class Playlist:
@@ -14,8 +14,13 @@ class Playlist:
         info_log(__name__, call_stack[0][3], f"created {self.playlist_name} playlist successfully")
 
     def add_song(self, song: Song):
-        if not self.is_premium and len(self.playlist) == 20:
-            raise CantAddAnotherPlaylistException
-        self.playlist.append(song)
         call_stack = inspect.stack()
-        info_log(__name__, call_stack[0][3], "added the song successfully")
+        func_name = call_stack[0][3]
+        try:
+            if not self.is_premium and len(self.playlist) == 20:
+                raise CantAddAnotherPlaylistException
+            self.playlist.append(song)
+            info_log(__name__, func_name, "added the song successfully")
+        except CantAddAnotherPlaylistException:
+            error_log(__name__, func_name, CantAddAnotherPlaylistException.__name__)
+
